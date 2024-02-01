@@ -1,8 +1,16 @@
 {
   "name": "japanjs",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/japanjsorg/japanjs"
+  },
+  "homepage": "https://japanjs.org",
+  "keywords": ["japanjs", "japan"],
+  "description": "JapanJS is a library that provides Japan-specific functions. It is a tree-shaking library, so the bundle size is not heavy.",
   "sideEffects": false,
   "scripts": {
     "dev": "vite",
