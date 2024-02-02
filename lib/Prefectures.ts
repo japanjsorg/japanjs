@@ -50,4 +50,4 @@ const prefectures: Prefectures = [
   { name: "沖縄" }
 ];
 
-export default prefectures
+export { prefectures }

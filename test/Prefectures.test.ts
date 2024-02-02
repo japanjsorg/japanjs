@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import prefectures from '../lib/Prefectures';
+import { prefectures } from '../lib/Prefectures';
 
 describe('Prefectures array', () => {
   test('contains the correct number of prefectures', () => {

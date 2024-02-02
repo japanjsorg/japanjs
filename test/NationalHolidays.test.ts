@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import nationalHolidays from '../lib/NationalHolidays';
+import { nationalHolidays } from '../lib/NationalHolidays';
 
 describe('National Holidays', () => {
   test('元日 is on January 1st', () => {

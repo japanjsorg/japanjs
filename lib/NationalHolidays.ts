@@ -18,4 +18,4 @@ const nationalHolidays: NationalHolidays = [
   { name: "勤労感謝の日", date: new Date(2024, 10, 23) } // 11月23日
 ];
 
-export default nationalHolidays
+export { nationalHolidays }
