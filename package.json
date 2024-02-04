@@ -1,9 +1,11 @@
 {
   "name": "japanjs",
   "private": false,
-  "version": "0.1.1",
+  "version": "0.1.4",
   "type": "module",
+  "files": ["dist"],
   "license": "MIT",
+  "exports": "./dist/japanjs.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/japanjsorg/japanjs"
