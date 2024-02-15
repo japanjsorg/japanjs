@@ -12,4 +12,10 @@ export class Character {
       return String.fromCharCode(match.charCodeAt(0) + 0x60);
     });
   }
+
+  static toFullWidthAlphanumeric(value: string): string {
+    return value.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(char) {
+        return String.fromCharCode(char.charCodeAt(0) - 0xFEE0)
+      })
+  }
 }
