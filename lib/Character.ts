@@ -110,6 +110,7 @@ export class Character {
     })
   }
 
+  // https://ja.wikipedia.org/wiki/ヘボン式ローマ字
   static convertToModifiedHepburn(inputData: string) {
 
     let returnValue = inputData
