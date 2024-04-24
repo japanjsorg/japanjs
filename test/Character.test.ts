@@ -17,4 +17,12 @@ describe('Character class', () => {
     expect(Character.toKatakana('')).toBe('');
     expect(Character.toKatakana('てすと123')).toBe('テスト123');
   });
+
+  // toChineseNumeral
+  test('toChineseNumeral', () => {
+    expect(Character.toChineseNumeral('一')).toBe('壱')
+    expect(Character.toChineseNumeral('二')).toBe('弐')
+    expect(Character.toChineseNumeral('三')).toBe('参')
+    expect(Character.toChineseNumeral('十')).toBe('拾')
+  })
 });
