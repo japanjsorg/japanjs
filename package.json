@@ -3,7 +3,9 @@
   "private": false,
   "version": "0.1.7",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "exports": "./dist/japanjs.js",
   "repository": {
@@ -11,17 +13,25 @@
     "url": "https://github.com/japanjsorg/japanjs"
   },
   "homepage": "https://japanjs.org",
-  "keywords": ["japanjs", "japan"],
+  "keywords": [
+    "japanjs",
+    "japan"
+  ],
   "description": "JapanJS is a library that provides Japan-specific functions. It is a tree-shaking library, so the bundle size is not heavy.",
   "sideEffects": false,
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "lint": "eslint lib"
   },
   "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "eslint": "^9.12.0",
+    "globals": "^15.11.0",
     "typescript": "^5.0.2",
+    "typescript-eslint": "^8.9.0",
     "vite": "^4.3.2",
     "vitest": "^1.2.1"
   }
