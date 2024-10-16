@@ -20,14 +20,14 @@ export class Character {
   }
 
   static toChineseNumeral(value: string): string {
-    let convertMap: { [key: string]: string } = {
+    const convertMap: { [key: string]: string } = {
       '一': '壱',
       '二': '弐',
       '三': '参',
       '十': '拾'
     }
   
-    let reg = new RegExp('(' + Object.keys(convertMap).join('|') + ')', 'g')
+    const reg = new RegExp('(' + Object.keys(convertMap).join('|') + ')', 'g')
     return value.replace(reg, function(character) {
       const key = character
       return convertMap[key]
@@ -35,11 +35,11 @@ export class Character {
   }
 
   static convertToFull(inputData: string) {
-    let returnValue = inputData.replace(/[0-9]/g, function(char) {
+    const returnValue = inputData.replace(/[0-9]/g, function(char) {
         return String.fromCharCode(char.charCodeAt(0) + 0xFEE0)
       })
   
-    let kanaMap: { [key: string]: string } = {
+    const kanaMap: { [key: string]: string } = {
       'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
       'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
       'ﾀﾞ': 'ダ', 'ﾁﾞ': 'ヂ', 'ﾂﾞ': 'ヅ', 'ﾃﾞ': 'デ', 'ﾄﾞ': 'ド',
@@ -62,7 +62,7 @@ export class Character {
       'ｰ': 'ー'
     }
   
-    let reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
+    const reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
     return returnValue.replace(reg, function(kana) {
       const key = kana
       return kanaMap[key]
@@ -70,11 +70,11 @@ export class Character {
   }
 
   static convertToHalf(inputData: string) {
-    let returnValue = inputData.replace(/[０-９]/g, function(char) {
+    const returnValue = inputData.replace(/[０-９]/g, function(char) {
         return String.fromCharCode(char.charCodeAt(0) - 0xFEE0)
       })
   
-    let kanaMap: { [key: string]: string } = {
+    const kanaMap: { [key: string]: string } = {
       'ガ': 'ｶﾞ', 'ギ': 'ｷﾞ', 'グ': 'ｸﾞ', 'ゲ': 'ｹﾞ', 'ゴ': 'ｺﾞ',
       'ザ': 'ｻﾞ', 'ジ': 'ｼﾞ', 'ズ': 'ｽﾞ', 'ゼ': 'ｾﾞ', 'ゾ': 'ｿﾞ',
       'ダ': 'ﾀﾞ', 'ヂ': 'ﾁﾞ', 'ヅ': 'ﾂﾞ', 'デ': 'ﾃﾞ', 'ド': 'ﾄﾞ',
@@ -97,7 +97,7 @@ export class Character {
       'ー': 'ｰ'
     }
   
-    let reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
+    const reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
     return returnValue.replace(reg, function(kana) {
       const key = kana
       return kanaMap[key]
@@ -113,9 +113,9 @@ export class Character {
   // https://ja.wikipedia.org/wiki/ヘボン式ローマ字
   static convertToModifiedHepburn(inputData: string) {
 
-    let returnValue = inputData
+    const returnValue = inputData
     
-    let kanaMap = {
+    const kanaMap = {
       'か': 'ka', 'き': 'ki', 'く': 'ku', 'け': 'ke', 'こ': 'ko',
       'きゃ': 'kya', 'きぃ': 'kyi', 'きゅ': 'kyu', 'きぇ': 'kye', 'きょ': 'kyo',
       'が': 'ga', 'ぎ': 'gi', 'ぐ': 'gu', 'げ': 'ge', 'ご': 'go',
@@ -149,17 +149,17 @@ export class Character {
       'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o',
     }
     
-    let reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
-    return returnValue.replace(reg, function(kana: any) {
+    const reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
+    return returnValue.replace(reg, function(kana) {
       const key= kana
       return kanaMap[key]
     })
   }
 
   static convertToHiragana(inputData: string) {
-    let returnValue = inputData
+    const returnValue = inputData
   
-    let kanaMap = {
+    const kanaMap = {
       'ka': 'か',
       'ki': 'き',
       'ku': 'く',
@@ -266,8 +266,8 @@ export class Character {
       'wa': 'わ' // , 'i': 'ゐ', 'e': 'ゑ', 'o': 'を',
     }
   
-    let reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
-    return returnValue.replace(reg, function(kana: any) {
+    const reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
+    return returnValue.replace(reg, function(kana) {
       const key = kana
       return kanaMap[key]
     })
