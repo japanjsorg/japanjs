@@ -21,7 +21,9 @@
   "sideEffects": false,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build:types": "tsc",
+    "build:vite": "vite build",
+    "build": "npm run build:types && npm run build:vite",
     "preview": "vite preview",
     "test": "vitest",
     "lint": "eslint lib"
