@@ -115,7 +115,7 @@ export class Character {
 
     const returnValue = inputData
     
-    const kanaMap = {
+    const kanaMap: Record<string, string> = {
       'か': 'ka', 'き': 'ki', 'く': 'ku', 'け': 'ke', 'こ': 'ko',
       'きゃ': 'kya', 'きぃ': 'kyi', 'きゅ': 'kyu', 'きぇ': 'kye', 'きょ': 'kyo',
       'が': 'ga', 'ぎ': 'gi', 'ぐ': 'gu', 'げ': 'ge', 'ご': 'go',
@@ -159,7 +159,7 @@ export class Character {
   static convertToHiragana(inputData: string) {
     const returnValue = inputData
   
-    const kanaMap = {
+    const kanaMap: Record<string, string> = {
       'ka': 'か',
       'ki': 'き',
       'ku': 'く',

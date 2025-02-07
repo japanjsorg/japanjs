@@ -5,7 +5,7 @@ export class MorseCode {
         return String.fromCharCode(char.charCodeAt(0) + 0xFEE0)
       })
 
-    const kanaMap = {
+    const kanaMap: Record<string, string> = {
       'ガ': '・－・・　・・　', 'ギ': '－・－・・　・・　', 'グ': '・・・－　・・　', 'ゲ': '－・－－　・・　', 'ゴ': '－－－－　・・　',
       'ザ': '－・－・－　・・　', 'ジ': '－－・－・　・・　', 'ズ': '－－－・－　・・　', 'ゼ': '・－－－・　・・　', 'ゾ': '－－－・　・・　',
       'ダ': '－・　・・　', 'ヂ': '・・－・　・・　', 'ヅ': '・－－・　・・　', 'デ': '・－・－－　・・　', 'ド': '・・－・・　・・　',
@@ -100,7 +100,7 @@ export class MorseCode {
       return String.fromCharCode(char.charCodeAt(0) + 0xFEE0)
     })
 
-    const kanaMap = {
+    const kanaMap: Record<string, string> = {
       '・－・・　・・　': 'ガ', '－・－・・　・・　': 'ギ', '・・・－　・・　': 'グ', '－・－－　・・　': 'ゲ', '－－－－　・・　': 'ゴ',
       '－・－・－　・・　': 'ザ', '－－・－・　・・　': 'ジ', '－－－・－　・・　': 'ズ', '・－－－・　・・　': 'ゼ', '－－－・　・・　': 'ゾ',
       '－・　・・　': 'ダ', '・・－・　・・　': 'ヂ', '・－－・　・・　': 'ヅ', '・－・－－　・・　': 'デ', '・・－・・　・・　': 'ド',
