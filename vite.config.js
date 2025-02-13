@@ -7,21 +7,14 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
+    outDir: 'dist', // 出力先
+    emptyOutDir: false, // ディレクトリをクリアしない
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, 'lib/main.ts'),
+      entry: resolve(__dirname, 'lib/japanjs.ts'),
       name: 'JapanJS',
       // the proper extensions will be added
       fileName: 'japanjs',
-      formats: ['es']
-    },
-    rollupOptions: {
-      output: {
-        // https://rollupjs.org/configuration-options/#output-preservemodules
-        preserveModules: true,
-        // https://rollupjs.org/configuration-options/#output-preservemodulesroot
-        preserveModulesRoot: 'lib'
-      },
     },
   },
 })
