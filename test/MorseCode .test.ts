@@ -5,40 +5,40 @@ import { MorseCode } from '../lib/MorseCode';
 describe('MorseCode', () => {
   describe('toMorseCode', () => {
     it('should convert katakana to morse code correctly', () => {
-      // 例: ア (A) は "－－・－－　" に変換されるべき
-      expect(MorseCode.toMorseCode('ア')).toBe('－－・－－　');
+      // 例: ア (A) は "－－・－－" に変換されるべき
+      expect(MorseCode.toMorseCode('ア')).toBe('－－・－－');
       // 他のカタカナに対するテストを追加
-      expect(MorseCode.toMorseCode('イ')).toBe('・－　');
-      expect(MorseCode.toMorseCode('ロ')).toBe('・－・－　');
-      expect(MorseCode.toMorseCode('ハ')).toBe('－・・・　');
-      expect(MorseCode.toMorseCode('ニ')).toBe('－・－・　');
-      // expect(MorseCode.toMorseCode('')).toBe('　');
+      expect(MorseCode.toMorseCode('イ')).toBe('・－');
+      expect(MorseCode.toMorseCode('ロ')).toBe('・－・－');
+      expect(MorseCode.toMorseCode('ハ')).toBe('－・・・');
+      expect(MorseCode.toMorseCode('ニ')).toBe('－・－・');
+      // expect(MorseCode.toMorseCode('')).toBe('');
     });
 
     it('半角数字の変換を確認', () => {
-      expect(MorseCode.toMorseCode('1')).toBe('・－－－－　')
-      expect(MorseCode.toMorseCode('2')).toBe('・・－－－　')
-      expect(MorseCode.toMorseCode('3')).toBe('・・・－－　');
-      expect(MorseCode.toMorseCode('4')).toBe('・・・・－　');
-      expect(MorseCode.toMorseCode('5')).toBe('・・・・・　');
-      expect(MorseCode.toMorseCode('6')).toBe('－・・・・　');
-      expect(MorseCode.toMorseCode('7')).toBe('－－・・・　');
-      expect(MorseCode.toMorseCode('8')).toBe('－－－・・　');
-      expect(MorseCode.toMorseCode('9')).toBe('－－－－・　');
-      expect(MorseCode.toMorseCode('0')).toBe('－－－－－　');
+      expect(MorseCode.toMorseCode('1')).toBe('・－－－－')
+      expect(MorseCode.toMorseCode('2')).toBe('・・－－－')
+      expect(MorseCode.toMorseCode('3')).toBe('・・・－－');
+      expect(MorseCode.toMorseCode('4')).toBe('・・・・－');
+      expect(MorseCode.toMorseCode('5')).toBe('・・・・・');
+      expect(MorseCode.toMorseCode('6')).toBe('－・・・・');
+      expect(MorseCode.toMorseCode('7')).toBe('－－・・・');
+      expect(MorseCode.toMorseCode('8')).toBe('－－－・・');
+      expect(MorseCode.toMorseCode('9')).toBe('－－－－・');
+      expect(MorseCode.toMorseCode('0')).toBe('－－－－－');
     })
 
     it('全角数字の変換を確認', () => {
-      expect(MorseCode.toMorseCode('１')).toBe('・－－－－　')
-      expect(MorseCode.toMorseCode('２')).toBe('・・－－－　')
-      expect(MorseCode.toMorseCode('３')).toBe('・・・－－　');
-      expect(MorseCode.toMorseCode('４')).toBe('・・・・－　');
-      expect(MorseCode.toMorseCode('５')).toBe('・・・・・　');
-      expect(MorseCode.toMorseCode('６')).toBe('－・・・・　');
-      expect(MorseCode.toMorseCode('７')).toBe('－－・・・　');
-      expect(MorseCode.toMorseCode('８')).toBe('－－－・・　');
-      expect(MorseCode.toMorseCode('９')).toBe('－－－－・　');
-      expect(MorseCode.toMorseCode('０')).toBe('－－－－－　');
+      expect(MorseCode.toMorseCode('１')).toBe('・－－－－')
+      expect(MorseCode.toMorseCode('２')).toBe('・・－－－')
+      expect(MorseCode.toMorseCode('３')).toBe('・・・－－');
+      expect(MorseCode.toMorseCode('４')).toBe('・・・・－');
+      expect(MorseCode.toMorseCode('５')).toBe('・・・・・');
+      expect(MorseCode.toMorseCode('６')).toBe('－・・・・');
+      expect(MorseCode.toMorseCode('７')).toBe('－－・・・');
+      expect(MorseCode.toMorseCode('８')).toBe('－－－・・');
+      expect(MorseCode.toMorseCode('９')).toBe('－－－－・');
+      expect(MorseCode.toMorseCode('０')).toBe('－－－－－');
     })
   });
 

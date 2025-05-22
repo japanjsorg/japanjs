@@ -87,10 +87,14 @@ export class MorseCode {
     }
 
     const reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
-    return returnValue.replace(reg, function(kana) {
+    const withTrailingSpace = returnValue.replace(reg, function(kana) {
       const key = kana
       return kanaMap[key] !== undefined ? kanaMap[key] : kana;
     })
+
+    const withoutTrailingSpace = withTrailingSpace.slice(0, -1)
+
+    return withoutTrailingSpace
   }
 
   static toKatakana(inputData: string): string {
