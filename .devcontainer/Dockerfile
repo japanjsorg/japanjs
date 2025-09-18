@@ -6,3 +6,5 @@ RUN apt-get update && apt-get upgrade -y
 RUN npm install -g @vue/cli
 
 RUN npm install -g firebase-tools
+
+RUN npm i -g @openai/codex
