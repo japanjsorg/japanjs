@@ -40,12 +40,32 @@ describe('MorseCode', () => {
       expect(MorseCode.toMorseCode('９')).toBe('－－－－・');
       expect(MorseCode.toMorseCode('０')).toBe('－－－－－');
     })
+    it('パ行と半濁点の変換を確認', () => {
+      expect(MorseCode.toMorseCode('パ')).toBe('－・・・　・・－－・');
+      expect(MorseCode.toMorseCode('ポ')).toBe('－・・　・・－－・');
+      expect(MorseCode.toMorseCode('゜')).toBe('・・－－・');
+    });
+
   });
 
   describe('toKatakana', () => {
     it('should convert morse code to katakana correctly', () => {
-      // MorseCode.toKatakanaのテストケースを追加
-      // このメソッドのロジックに合わせたテストを書いてください
+      expect(MorseCode.toKatakana('－－・－－')).toBe('ア');
+      expect(MorseCode.toKatakana('・－')).toBe('イ');
+      expect(MorseCode.toKatakana('－－－－')).toBe('コ');
+      expect(MorseCode.toKatakana('－－・－－　・－・－')).toBe('アロ');
+    });
+
+    it('濁点・半濁点を含むモールス信号をカタカナに変換できる', () => {
+      expect(MorseCode.toKatakana('・－・・　・・')).toBe('ガ');
+      expect(MorseCode.toKatakana('－・・　・・－－・')).toBe('ポ');
+      expect(MorseCode.toKatakana('－・・・　・・－－・')).toBe('パ');
+      expect(MorseCode.toKatakana('・・－－・')).toBe('゜');
+    });
+
+    it('toMorseCodeとの往復で文字列が保持される', () => {
+      const encoded = MorseCode.toMorseCode('テスト');
+      expect(MorseCode.toKatakana(encoded)).toBe('テスト');
     });
   });
 });
