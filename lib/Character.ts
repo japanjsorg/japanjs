@@ -112,48 +112,102 @@ export class Character {
 
   // https://ja.wikipedia.org/wiki/ヘボン式ローマ字
   static convertToModifiedHepburn(inputData: string) {
+    const hiragana = Character.toHiragana(inputData)
 
-    const returnValue = inputData
-    
-    const kanaMap: Record<string, string> = {
-      'か': 'ka', 'き': 'ki', 'く': 'ku', 'け': 'ke', 'こ': 'ko',
+    const digraphMap: Record<string, string> = {
       'きゃ': 'kya', 'きぃ': 'kyi', 'きゅ': 'kyu', 'きぇ': 'kye', 'きょ': 'kyo',
-      'が': 'ga', 'ぎ': 'gi', 'ぐ': 'gu', 'げ': 'ge', 'ご': 'go',
       'ぎゃ': 'gya', 'ぎぃ': 'gyi', 'ぎゅ': 'gyu', 'ぎぇ': 'gye', 'ぎょ': 'gyo',
-      'さ': 'sa', 'し': 'si', 'す': 'su', 'せ': 'se', 'そ': 'so',
       'しゃ': 'sha', 'しぃ': 'shi', 'しゅ': 'shu', 'しぇ': 'she', 'しょ': 'sho',
-      'ざ': 'za', 'じ': 'ji', 'ず': 'zu', 'ぜ': 'ze', 'ぞ': 'zo',
       'じゃ': 'ja', 'じぃ': 'ji', 'じゅ': 'ju', 'じぇ': 'je', 'じょ': 'jo',
-      'た': 'ta', 'ち': 'chi', 'つ': 'tsu', 'て': 'te', 'と': 'to',
       'ちゃ': 'cha', 'ちぃ': 'chi', 'ちゅ': 'chu', 'ちぇ': 'che', 'ちょ': 'cho',
-      'だ': 'da', 'ぢ': 'ji', 'づ': 'zu', 'で': 'de', 'ど': 'do',
-      'ぢゃ': 'dya', 'ぢぃ': 'dyi', 'ぢゅ': 'dyu', 'ぢぇ': 'dye', 'ぢょ': 'dyo',
-      'な': 'na', 'に': 'ni', 'ぬ': 'nu', 'ね': 'ne', 'の': 'no',
+      'ぢゃ': 'ja', 'ぢぃ': 'ji', 'ぢゅ': 'ju', 'ぢぇ': 'je', 'ぢょ': 'jo',
       'にゃ': 'nya', 'にぃ': 'nyi', 'にゅ': 'nyu', 'にぇ': 'nye', 'にょ': 'nyo',
-      'は': 'ha', 'ひ': 'hi', 'ふ': 'fu', 'へ': 'he', 'ほ': 'ho',
       'ひゃ': 'hya', 'ひぃ': 'hyi', 'ひゅ': 'hyu', 'ひぇ': 'hye', 'ひょ': 'hyo',
-      'ば': 'ba', 'び': 'bi', 'ぶ': 'bu', 'べ': 'be', 'ぼ': 'bo',
       'びゃ': 'bya', 'びぃ': 'byi', 'びゅ': 'byu', 'びぇ': 'bye', 'びょ': 'byo',
-      'ぱ': 'pa', 'ぴ': 'pi', 'ぷ': 'pu', 'ぺ': 'pe', 'ぽ': 'po',
       'ぴゃ': 'pya', 'ぴぃ': 'pyi', 'ぴゅ': 'pyu', 'ぴぇ': 'pye', 'ぴょ': 'pyo',
-      'ま': 'ma', 'み': 'mi', 'む': 'mu', 'め': 'me', 'も': 'mo',
       'みゃ': 'mya', 'みぃ': 'myi', 'みゅ': 'myu', 'みぇ': 'mye', 'みょ': 'myo',
-      'や': 'ya', 'ゆ': 'yu', 'よ': 'yo',
-      'ら': 'ra', 'り': 'ri', 'る': 'ru', 'れ': 're', 'ろ': 'ro',
       'りゃ': 'rya', 'りぃ': 'ryi', 'りゅ': 'ryu', 'りぇ': 'rye', 'りょ': 'ryo',
-      'ら゚': 'la', 'り゚': 'li', 'る゚': 'lu', 'れ゚': 'le', 'ろ゚': 'lo',
       'り゚ゃ': 'lya', 'り゚ぃ': 'lyi', 'り゚ゅ': 'lyu', 'り゚ぇ': 'lye', 'り゚ょ': 'lyo',
-      'わ': 'wa', 'ゐ': 'i', 'ゑ': 'e', 'を': 'o',
-      'わ゙': 'va', 'ゐ゙': 'vi', 'ゔ': 'vu', 'ゑ゙': 've', 'を゙': 'vo',
-      'ん': 'n',
-      'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o',
+      'ゔぁ': 'va', 'ゔぃ': 'vi', 'ゔぇ': 've', 'ゔぉ': 'vo', 'ゔゃ': 'vya', 'ゔゅ': 'vyu', 'ゔょ': 'vyo',
+      'ふぁ': 'fa', 'ふぃ': 'fi', 'ふぇ': 'fe', 'ふぉ': 'fo', 'ふゃ': 'fya', 'ふゅ': 'fyu', 'ふょ': 'fyo',
+      'てぃ': 'ti', 'てゅ': 'tyu', 'てょ': 'tyo', 'でぃ': 'di', 'でゅ': 'dyu', 'でょ': 'dyo',
+      'うぃ': 'wi', 'うぇ': 'we', 'うぉ': 'wo',
+      'くゎ': 'kwa', 'ぐゎ': 'gwa',
+      'つぁ': 'tsa', 'つぃ': 'tsi', 'つぇ': 'tse', 'つぉ': 'tso'
     }
-    
-    const reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g')
-    return returnValue.replace(reg, function(kana) {
-      const key= kana
-      return kanaMap[key]
-    })
+
+    const singleMap: Record<string, string> = {
+      'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o',
+      'ぁ': 'a', 'ぃ': 'i', 'ぅ': 'u', 'ぇ': 'e', 'ぉ': 'o',
+      'か': 'ka', 'き': 'ki', 'く': 'ku', 'け': 'ke', 'こ': 'ko',
+      'が': 'ga', 'ぎ': 'gi', 'ぐ': 'gu', 'げ': 'ge', 'ご': 'go',
+      'さ': 'sa', 'し': 'shi', 'す': 'su', 'せ': 'se', 'そ': 'so',
+      'ざ': 'za', 'じ': 'ji', 'ず': 'zu', 'ぜ': 'ze', 'ぞ': 'zo',
+      'た': 'ta', 'ち': 'chi', 'つ': 'tsu', 'て': 'te', 'と': 'to',
+      'だ': 'da', 'ぢ': 'ji', 'づ': 'zu', 'で': 'de', 'ど': 'do',
+      'な': 'na', 'に': 'ni', 'ぬ': 'nu', 'ね': 'ne', 'の': 'no',
+      'は': 'ha', 'ひ': 'hi', 'ふ': 'fu', 'へ': 'he', 'ほ': 'ho',
+      'ば': 'ba', 'び': 'bi', 'ぶ': 'bu', 'べ': 'be', 'ぼ': 'bo',
+      'ぱ': 'pa', 'ぴ': 'pi', 'ぷ': 'pu', 'ぺ': 'pe', 'ぽ': 'po',
+      'ま': 'ma', 'み': 'mi', 'む': 'mu', 'め': 'me', 'も': 'mo',
+      'や': 'ya', 'ゆ': 'yu', 'よ': 'yo',
+      'ゃ': 'ya', 'ゅ': 'yu', 'ょ': 'yo',
+      'ら': 'ra', 'り': 'ri', 'る': 'ru', 'れ': 're', 'ろ': 'ro',
+      'ら゚': 'la', 'り゚': 'li', 'る゚': 'lu', 'れ゚': 'le', 'ろ゚': 'lo',
+      'わ': 'wa', 'ゎ': 'wa', 'ゐ': 'i', 'ゑ': 'e', 'を': 'o',
+      'わ゙': 'va', 'ゐ゙': 'vi', 'ゑ゙': 've', 'を゙': 'vo',
+      'ゔ': 'vu', 'ゕ': 'ka', 'ゖ': 'ke'
+    }
+
+    let result = ''
+    for (let index = 0; index < hiragana.length;) {
+      const pair = hiragana.slice(index, index + 2)
+      if (digraphMap[pair]) {
+        result += digraphMap[pair]
+        index += 2
+        continue
+      }
+
+      const char = hiragana[index]
+
+      if (char === 'っ') {
+        const nextPair = hiragana.slice(index + 1, index + 3)
+        const nextChar = hiragana[index + 1]
+        const nextRoman = digraphMap[nextPair] || singleMap[nextChar] || ''
+        if (nextRoman) {
+          result += nextRoman[0]
+        }
+        index += 1
+        continue
+      }
+
+      if (char === 'ん') {
+        const nextPair = hiragana.slice(index + 1, index + 3)
+        const nextChar = hiragana[index + 1]
+        const nextRoman = digraphMap[nextPair] || singleMap[nextChar] || ''
+        if (nextRoman && /^[aiueoy]/.test(nextRoman[0])) {
+          result += "n'"
+        } else {
+          result += 'n'
+        }
+        index += 1
+        continue
+      }
+
+      if (char === 'ー') {
+        const match = result.match(/[aiueo]$/)
+        if (match) {
+          result += match[0]
+        }
+        index += 1
+        continue
+      }
+
+      result += singleMap[char] || char
+      index += 1
+    }
+
+    return result
   }
 
   static convertToHiragana(inputData: string) {
